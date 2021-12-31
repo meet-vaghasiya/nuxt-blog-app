@@ -1,30 +1,49 @@
 <template>
-  <div class="home-page">
+  <div class="home-page container m-auto">
     <section class="intro">
       <h1>Get the latest tech news</h1>
     </section>
-    <section class="featured-posts">
-      <nuxt-link :to="'/posts/' + 1" class="post-preview">
-        <article >
-          <div class="post-thumbnail" style="background-image:url('https://images.unsplash.com/photo-1638913662180-afc4334cf422?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60')"></div>
-          <div class="post-content">
-            <h1>Post title</h1>
-            <p>post text</p>
-          </div>
-        </article>
-      </nuxt-link>
-      <nuxt-link :to="'/posts/' + 2" class="post-preview">
-        <article >
-          <div class="post-thumbnail" style="background-image:url('https://images.unsplash.com/photo-1638913662180-afc4334cf422?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60')"></div>
-          <div class="post-content">
-            <h1>Post title</h1>
-            <p>post text</p>
-          </div>
-        </article>
-      </nuxt-link>
+    <section
+      class="
+        featured-posts
+        grid grid-cols-1
+        sm:grid-cols-2
+        lg:grid-cols-3
+        justify-center justify-items-center
+        gap-8
+      "
+    >
+      <post-preview
+        id="1"
+        title="Welcome to the first post"
+        previewText="Preview text"
+        thumbnail="https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bGFwdG9wfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+      />
+      <post-preview
+        id="2"
+        title="Welcome to the second post"
+        previewText="Preview text"
+        thumbnail="https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=725&q=80"
+      />
+      <post-preview
+        id="3"
+        title="Welcome to the third post"
+        previewText="Preview   thied text"
+        thumbnail="https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=725&q=80"
+      />
     </section>
   </div>
 </template>
+
+<script>
+import PostPreview from "@/components/Posts/PostPreview.vue";
+export default {
+  components: {
+    PostPreview,
+  },
+};
+</script>
+
 
 <style scoped>
 .intro {
@@ -34,6 +53,7 @@
   box-sizing: border-box;
   background-position: center;
   background-size: cover;
+  background-image: url("~/assets/images/main-page-background.jpg");
 }
 
 .intro h1 {
@@ -64,41 +84,5 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-}
-
-.post-preview {
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 2px #ccc;
-  background-color: white;
-  width: 90%;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-@media (min-width: 850px) {
-  .post-preview {
-    width: 400px;
-    margin: 10px;
-  }
-}
-
-.post-thumbnail {
-  width: 100%;
-  height: 200px;
-  background-position: center;
-  background-size: cover;
-}
-
-.post-content {
-  padding: 10px;
-  text-align: center;
-}
-
-a:hover .post-content,
-a:active .post-content {
-  background-color: #ccc;
 }
 </style>
