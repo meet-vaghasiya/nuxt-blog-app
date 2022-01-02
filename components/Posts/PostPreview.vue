@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="'/posts/' + 1" class="post-preview d-block">
+  <nuxt-link :to="postLink" class="post-preview d-block">
     <article>
       <div
         class="post-thumbnail"
@@ -32,7 +32,16 @@ export default {
       type: String,
       require: true,
     },
+    isAdmin:{
+      require: true,
+      type: Boolean
+    }
   },
+  computed: {
+    postLink(){
+       return this.isAdmin ? '/admin/' + this.id : '/posts/'+ this.id 
+    }
+  }
 };
 </script>
 
