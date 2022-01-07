@@ -1,24 +1,37 @@
 <template>
   <div class="admin-post-page">
-    <section class="update-form">
-      <admin-post-form :post="loadedPost" />
+    <section class="update-form w-1/2 m-auto">
+      <admin-post-form :post="loadedPost" @submit="submitPost" />
     </section>
   </div>
 </template>
 <script>
+import axios from "axios";
 import AdminPostForm from "~/components/Admin/AdminPostForm.vue";
 export default {
-  layout:'admin',
+  layout: "admin",
   components: { AdminPostForm },
-  data(){
-      return {
-          loadedPost:{
-              author:'MEet',
-              title:'title',
-              content:'Super content',
-              thumbnailLink:"https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bGFwdG9wfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-          }
-      }
-  }
+  asyncData(context) {
+    return axios
+      .get(
+        "https://blog-nuxt-bf85c-default-rtdb.firebaseio.com/posts/" +
+          context.params.postId +
+          ".json"
+      )
+      .then((res) => {
+        return {
+          loadedPost:{... res.data,id:context.params.postId},
+        };
+      })
+      .catch((e) =>context.error());
+  },
+  created(){
+
+  },
+  methods: {
+    submitPost(editedPost) {
+      this.$store.dispatch('editPost',editedPost)
+    },
+  },
 };
 </script>
