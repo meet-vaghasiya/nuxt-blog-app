@@ -9,6 +9,7 @@
 import axios from "axios";
 import AdminPostForm from "~/components/Admin/AdminPostForm.vue";
 export default {
+  middleware:['check-auth','auth'],
   components: { AdminPostForm },
   methods: {
     onSubmit(postData) {

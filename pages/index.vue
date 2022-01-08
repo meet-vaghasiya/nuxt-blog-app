@@ -17,7 +17,6 @@ export default {
   //   return {
   //     loadedPost: [],
   //   };
-  // },
   computed:{
     loadedPost(){
       return  this.$store.getters.loadedPosts

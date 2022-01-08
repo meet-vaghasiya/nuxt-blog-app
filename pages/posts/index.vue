@@ -7,7 +7,7 @@
 <script>
 import PostList from "~/components/Posts/PostList.vue";
 export default {
-  layout: "admin",
+  // layout: "admin",\
   components: {
     PostList,
   },

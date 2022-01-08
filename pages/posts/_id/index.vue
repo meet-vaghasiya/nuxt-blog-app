@@ -18,7 +18,6 @@
 import axios from 'axios'
 export default {
   asyncData(context) {
-
   return  axios.get('https://blog-nuxt-bf85c-default-rtdb.firebaseio.com/posts/' + context.params.id + '.json').then((res)=>{
       return {
         loadedPost:res.data

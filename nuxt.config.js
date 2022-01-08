@@ -39,7 +39,6 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
 
@@ -60,6 +59,12 @@ export default {
   loadingIndicator: {
     name: 'circle',
     color: 'ff000098td'
+  },
+  env:{
+    baseURL: process.env.BASE_URL || 'https://blog-nuxt-bf85c-default-rtdb.firebaseio.com/',
+    fbApiKey:'AIzaSyCKXz6oluJHfkpZWH4Ft-Nup234ISZnDMY'
   }
+  
+
   // loading:false
 }
